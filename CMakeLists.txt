@@ -7,10 +7,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ---- Library with testable code ----
 add_library(math_utils src/math_utils.cpp)
 target_include_directories(math_utils PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
+file(GLOB BLACKJACK_SOURCES "src/*.cpp")
+add_library(blackjack_core ${BLACKJACK_SOURCES})
+target_include_directories(blackjack_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # ---- Main executable ----
 add_executable(cpp-dev main.cpp)
 target_link_libraries(cpp-dev PRIVATE math_utils)
+target_link_libraries(cpp-dev PRIVATE blackjack_core)
 
 # ---- Unit Testing with Google Test ----
 include(CTest)
@@ -26,8 +30,14 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(unit_tests tests/test_math_utils.cpp)
-target_link_libraries(unit_tests PRIVATE math_utils GTest::gtest_main)
+# add_executable(unit_tests tests/test_math_utils.cpp)
+# target_link_libraries(unit_tests PRIVATE math_utils GTest::gtest_main)
+
+# include(GoogleTest)
+# gtest_discover_tests(unit_tests)
+
+add_executable(unit_tests tests/test_blackjack.cpp)
+target_link_libraries(unit_tests PRIVATE blackjack_core GTest::gtest_main)
 
 include(GoogleTest)
 gtest_discover_tests(unit_tests)
