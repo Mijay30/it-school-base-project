@@ -27,6 +27,6 @@ ostream &operator<<(ostream &os, const Card &c)
     if (c.rank == ACE)
         rankStr = "A";
 
-    os << "[" << c.rank << "de " << suits[c.suit] << "]";
+    os << "[" << c.rank << " de " << suits[c.suit] << "]";
     return os;
 }
