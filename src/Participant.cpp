@@ -1,5 +1,6 @@
 #include "Participant.h"
 
+// implementarea clasei Participant, reprezinta un jucator sau dealer-ul in joc
 Participant::Participant(string n) : name(n) {}
 
 void Participant::addCard(const Card &c)

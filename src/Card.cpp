@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+// costructor pentru card, simbol si rang
 Card::Card(Suit s, Rank r) : suit(s), rank(r) {}
 
 int Card::getValue() const
@@ -14,9 +15,12 @@ Rank Card::getRank() const
     return rank;
 }
 
+// suprascriere operator << pentru a afisa cardul in formatul dorit
 ostream &operator<<(ostream &os, const Card &c)
 {
     string suits[] = {"Inima Rosie", "Romb", "Trefla", "Inima Neagra"};
+
+    // conversie rang in string pentru afisare
     string rankStr = (c.rank >= 2 && c.rank <= 10 && c.rank != ACE) ? to_string(c.rank) : "";
     if (c.rank == JACK)
         rankStr = "J";
@@ -27,6 +31,6 @@ ostream &operator<<(ostream &os, const Card &c)
     if (c.rank == ACE)
         rankStr = "A";
 
-    os << "[" << c.rank << " de " << suits[c.suit] << "]";
+    os << "[" << rankStr << " de " << suits[c.suit] << "]";
     return os;
 }

@@ -2,6 +2,7 @@
 
 Game::Game() : player("Jucator") {}
 
+// implementarea modelului singleton pentru clasa Game
 Game &Game::getInstance()
 {
     static Game instance;
@@ -13,6 +14,7 @@ void Game::start()
     cout << "=== Bine ai venit la Blackjack! ===\n\n";
     deck.shuffle();
 
+    // impartim cate 2 carti jucatorului si dealerului
     player.addCard(deck.drawCard());
     dealer.addCard(deck.drawCard());
     player.addCard(deck.drawCard());

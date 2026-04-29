@@ -1,8 +1,10 @@
 #include "Player.h"
 #include "Deck.h"
 
+// transmite numele jucatorilui catre Participant
 Player::Player(string n) : Participant(n) {}
 
+// bucla de decizie pentru jucator: hit sau stand
 bool Player::playTurn(Deck &deck)
 {
     char choice;
@@ -12,6 +14,7 @@ bool Player::playTurn(Deck &deck)
         try
         {
             cin >> choice;
+            // verificam daca inputul este valid
             if (cin.fail())
                 throw invalid_argument("Input invalid");
 
@@ -31,6 +34,8 @@ bool Player::playTurn(Deck &deck)
                 cout << "Optiune invalida.\n";
             }
         }
+
+        // gasim orice exceptie legata de input sau de pachetul gol
         catch (const exception &e)
         {
             cin.clear();

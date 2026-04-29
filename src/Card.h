@@ -38,5 +38,6 @@ public:
     int getValue() const;
     Rank getRank() const;
 
+    // permite afisarea obiectului Card direct cu cout
     friend ostream &operator<<(ostream &os, const Card &c);
 };

@@ -1,8 +1,10 @@
 #include "Dealer.h"
 #include "Deck.h"
 
+// constructor pentru Dealer, apeleaza constructorul Participant
 Dealer::Dealer() : Participant("Dealer") {}
 
+// implementarea metodei pentru Dealer
 bool Dealer::playTurn(Deck &deck)
 {
     cout << "Randul Dealerului " << endl;
